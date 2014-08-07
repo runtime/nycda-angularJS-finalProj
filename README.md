@@ -5,7 +5,7 @@ final project for nycda angularJS course
 
 Final project proposal.
 
-Case Study App
+Case Study App<br>
 An app that shows different agency case studies to users 
 
 Product summary (what does it do)
