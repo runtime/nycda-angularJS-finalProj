@@ -6,7 +6,7 @@ final project for nycda angularJS course
 Final project proposal.
 
 <h3>Case Study App</h3>
-<p>An app that shows different agency case studies to users </p>
+An app that shows different agency case studies to users
 
 <h3>Product summary (what does it do)</h3>
 Allows users to view different case studies from various advertising campaigns.
@@ -32,7 +32,7 @@ Database of users
 User permissions
 
 
-Future goals (if any) for project
+<h3>Future goals (if any) for project</h3>
 
 Data visualization of data, whether it be analytics or whatever I can get my hands on.
 
