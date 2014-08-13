@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angularfire.firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider

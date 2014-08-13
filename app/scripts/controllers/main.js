@@ -8,10 +8,9 @@
  * Controller of the nycdaAngularJsFinalProjApp
  */
 angular.module('nycdaAngularJsFinalProjApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('MainCtrl', ['$scope', 'syncData',
+        function ($scope, syncData) {
+
+            $scope.myCaseStudies = syncData('/casestudies');
+
+        }]);
