@@ -11,6 +11,9 @@ angular.module('nycdaAngularJsFinalProjApp')
     .controller('MainCtrl', ['$scope', 'syncData',
         function ($scope, syncData) {
 
-            $scope.myCaseStudies = syncData('/casestudies');
+            $scope.theCaseStudies = syncData('/casestudies').$asObject();
+            $scope.studies = $scope.theCaseStudies.studies;
+            console.log($scope.studies);
 
         }]);
+

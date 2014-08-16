@@ -59,6 +59,6 @@ angular.module('angularfire.firebase', ['firebase'])
             if( limit ) {
                 ref = ref.limit(limit);
             }
-            return $firebase(ref).$asArray();
+            return $firebase(ref);
         };
     });
