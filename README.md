@@ -36,3 +36,16 @@ User permissions
 
 Data visualization of data, whether it be analytics or whatever I can get my hands on.
 
+
+
+
+Resources:
+
+AngularFire Auth:
+https://www.firebase.com/docs/web/libraries/angular/guide.html
+http://tamas.io/angularjs-firebase-angularfire/
+http://ericsaupe.com/tag/angularjs-firebase-login/
+http://www.thinkster.io/angularjs/eHPCs7s87O/angularjs-tutorial-learn-to-rapidly-build-real-time-web-apps-with-firebase
+
+angularfire
+https://egghead.io/lessons/angularjs-get-started-with-firebase-and-angularfire

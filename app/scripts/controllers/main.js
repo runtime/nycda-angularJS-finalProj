@@ -15,5 +15,18 @@ angular.module('nycdaAngularJsFinalProjApp')
             $scope.studies = $scope.theCaseStudies.studies;
             console.log($scope.studies);
 
+//            var fbRef = new firebaseRef('https://case-studies.firebaseio.com/users');
+//            var authClient = new FirebaseSimpleLogin(fbRef, function(error, user) {
+//                if (error) {
+//                    // an error occurred while attempting login
+//                    console.log(error);
+//                } else if (user) {
+//                    // user authenticated with Firebase
+//                    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+//                } else {
+//                    // user is logged out
+//                }
+//            });
+
         }]);
 

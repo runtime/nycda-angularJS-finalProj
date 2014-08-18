@@ -8,7 +8,7 @@
         <h1>{{study.name}}</h1>
         <h2>{{study.client}}</h2>
         <p>{{study.description}}</p>
-        <h4>{{study.nominations}} Nominations</h4>
+        <h4>{{study.nominations}} Nominations / {{study.rating}} Awards</h4>
          <ul>
         <h4>TEAM:</h4>
          <li ng-repeat="team in study.team">{{team.name}}, {{team.position}}</li>
@@ -21,9 +21,3 @@
 
 </div>
 
-
-
-
-<!--<div class="item" ng-repeat="team in teams">-->
-    <!--<p>{{team.name}} wins: {{team.wins}} losses: {{team.losses}}</p>-->
-    <!--<div class="player" ng-repeat="player in team.players">{{player.name}} {{player.position}} HR {{player.hr}}</div>-->
