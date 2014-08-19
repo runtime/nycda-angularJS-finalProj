@@ -42,7 +42,10 @@ Data visualization of data, whether it be analytics or whatever I can get my han
 <h3>Resources:</h3>
 
 AngularFire Auth:
+best example of auth
+http://www.ng-newsletter.com/posts/back-end-with-firebase.html
 
+slightly outdated?
 https://www.firebase.com/docs/web/libraries/angular/guide.html
 
 http://tamas.io/angularjs-firebase-angularfire/

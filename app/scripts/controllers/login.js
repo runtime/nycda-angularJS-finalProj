@@ -27,6 +27,8 @@ angular.module('nycdaAngularJsFinalProjApp')
 
      $scope.auth = $firebaseAuth(fbRef);
 
+     console.log('user: ' + $scope.auth.user);
+
 //     var authClient = new FirebaseAuthClient(fbRef, function(error, user) {
 //        if (error) {
 //           // alert(error);
