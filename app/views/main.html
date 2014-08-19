@@ -1,5 +1,7 @@
 <div>
 
+
+
     <h1>{{theCaseStudies.name}}</h1>
     <hr>
 
@@ -7,8 +9,9 @@
         <img src="{{study.image}}"/>
         <h1>{{study.name}}</h1>
         <h2>{{study.client}}</h2>
+        <h4>security level: {{study.rating}}</h4>
         <p>{{study.description}}</p>
-        <h4>{{study.nominations}} Nominations / {{study.rating}} Awards</h4>
+        <h4>{{study.nominations}} Nominations</h4>
          <ul>
         <h4>TEAM:</h4>
          <li ng-repeat="team in study.team">{{team.name}}, {{team.position}}</li>

@@ -8,27 +8,34 @@
  * Controller of the nycdaAngularJsFinalProjApp
  */
 angular.module('nycdaAngularJsFinalProjApp')
-    .controller('MainCtrl', ['$scope', 'syncData',
-        function ($scope, syncData) {
+    .controller('MainCtrl', ['$scope', 'syncData', 'firebaseRef',
+        function ($scope, syncData, firebaseRef) {
 
             $scope.theCaseStudies = syncData('/casestudies').$asObject();
             $scope.studies = $scope.theCaseStudies.studies;
             console.log($scope.studies);
 
-//            var ref = new Firebase('https//case-studies.firebaseio.com/users');
 
-
-//            var authClient = new FirebaseSimpleLogin(ref, function(error, user) {
+//            var fbRef = firebaseRef('/users');
+//
+//            var authClient = new FirebaseAuthClient(fbRef, function(error, user) {
 //                if (error) {
-//                    // an error occurred while attempting login
-//                    console.log(error);
-//                } else if (user) {
-//                    // user authenticated with Firebase
-//                    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+//                    alert(error);
+//                    return;
+//                }
+//                if (user) {
+//                    // User is already logged in.
+//                    doLogin(user);
 //                } else {
-//                    // user is logged out
+//                    // User is logged out.
+//                    showLoginBox();
 //                }
 //            });
+
+
+
+
+
 
         }]);
 

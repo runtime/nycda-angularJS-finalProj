@@ -28,7 +28,16 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+
+// config means run this before aything else
+// run means run secondly think of this as a way to initialize something
+// before any controllers are called.
