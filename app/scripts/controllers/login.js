@@ -8,11 +8,9 @@
  * Controller of the nycdaAngularJsFinalProjApp
  */
 angular.module('nycdaAngularJsFinalProjApp')
-  .controller('LoginCtrl', ['$scope', 'firebaseRef',
-        function ($scope, firebaseRef ) {
+  .controller('LoginCtrl', ['$scope', 'firebaseRef', 'firebaseAuth',
+        function ($scope, firebaseRef, $firebaseAuth ) {
 
-
-            //$firebaseSimpleLogin
 
     // boilerplate
     $scope.awesomeThings = [
@@ -21,21 +19,27 @@ angular.module('nycdaAngularJsFinalProjApp')
       'Karma'
     ];
 
+     console.log($scope.awesomeThings);
+
      var fbRef = firebaseRef('/users');
 
-     var authClient = new FirebaseAuthClient(fbRef, function(error, user) {
-        if (error) {
-            alert(error);
-            return;
-        }
-        if (user) {
-            // User is already logged in.
-           // doLogin(user);
-        } else {
-            // User is logged out.
-           // showLoginBox();
-        }
-     });
+     console.log('fbRef: ' + fbRef);
+
+     $scope.auth = $firebaseAuth(fbRef);
+
+//     var authClient = new FirebaseAuthClient(fbRef, function(error, user) {
+//        if (error) {
+//           // alert(error);
+//            return;
+//        }
+//        if (user) {
+//            // User is already logged in.
+//           // doLogin(user);
+//        } else {
+//            // User is logged out.
+//           // showLoginBox();
+//        }
+//     });
 
 
 
