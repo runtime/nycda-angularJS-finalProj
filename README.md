@@ -39,9 +39,11 @@ Data visualization of data, whether it be analytics or whatever I can get my han
 
 
 
-Resources:
+<h3>Resources:</h3>
 
 AngularFire Auth:
+
+https://www.firebase.com/docs/web/libraries/angular/guide.html
 
 http://tamas.io/angularjs-firebase-angularfire/
 
@@ -51,5 +53,15 @@ https://www.firebase.com/docs/web/libraries/angular/guide.html
 http://ericsaupe.com/tag/angularjs-firebase-login/
 http://www.thinkster.io/angularjs/eHPCs7s87O/angularjs-tutorial-learn-to-rapidly-build-real-time-web-apps-with-firebase
 
-angularfire
+<h4>angularfire</h4>
 https://egghead.io/lessons/angularjs-get-started-with-firebase-and-angularfire
+
+
+<h4>yo angular:route</h4>
+
+http://briantford.com/blog/angular-yeoman
+
+<h4>Boostrap</h4>
+
+centering content in a row using offset or creating your own class
+http://stackoverflow.com/questions/18153234/center-a-div-using-bootstrap-3-markup-or-css
