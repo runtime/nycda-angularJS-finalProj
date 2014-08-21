@@ -11,10 +11,8 @@
 
         <div class="col-sm-4 col-md-4 col-lg-4">
 
-            <p ng-repeat="thing in awesomeThings"> cant scope an array?</p>
-
-
-            <form class="form-signin" role="form">
+            <form class="form-signin" role="form"
+                  ng-submit="submit(password)">
                 <h2 class="form-signin-heading">Please sign in</h2>
                 <input type="email" class="form-control" placeholder="Email address" required autofocus>
                 <input type="password" class="form-control" placeholder="Password" required>
@@ -26,7 +24,7 @@
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
 
-
+            <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
         </div>
 
     </div>
