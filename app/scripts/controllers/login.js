@@ -54,55 +54,21 @@ angular.module('nycdaAngularJsFinalProjApp')
     });
 
 
-     //authClient.login('1234'); // this could be "facebook", "twitter", "password", etc...
-
-
-    // var auth = initAuth(fbRef);
-
-     // FBSL example in details
-//   function initAuth(fbRef) {
-//            return new FirebaseSimpleLogin(fbRef, function (err, user) {
-//                // if there is an error then display it
-//                if (err) {
-//                    displayError(err);
-//                } else if (user) {
-//                    // we only want to log people in through the email/password provider
-//                    if( user.provider !== 'password' ) {
-//                        auth.logout();
-//                    }
-//                    else {
-//                        // logged in!
-//                        uid = user.uid;
-//                        // save the user to our firebase
-//                        fbRef.child(user.uid).set({
-//                            id: user.id,
-//                            uid: user.uid,
-//                            email: user.email
-//                        });
-//                        // switch over the the user info screen
-//                        switchView('userInfo');
-//                    }
-//                } else {
-//                    // logged out!
-//                    console.log('not logged in');
-//                }
-//            });
-//        }
-
-//    function displayError(err) {
-//
-//    }
-//
-//
-//    function switchView(view) {
-//
-//    }
 
 
   $scope.submit = function (password) {
       console.log('submit');
       authClient.login('password', $scope.user);
   };
+
+  $scope.logout = function() {
+      console.log("logout");
+      authClient.logout();
+      $location.path('/login');
+      //todo we need to send the user back to the main page
+  }
+
+
 
 
 
