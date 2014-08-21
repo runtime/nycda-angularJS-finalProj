@@ -1,0 +1,16 @@
+{
+    "securitylevels": [
+        {
+            "user": "trevorewen@gmail.com",
+            "securityLevel": 2
+        },
+        {
+            "user": "trevor@nycda.com",
+            "securityLevel": 3
+        },
+        {
+            "user": "erik.kroha@gmail.com",
+            "securityLevel": 5
+        }
+    ]
+}

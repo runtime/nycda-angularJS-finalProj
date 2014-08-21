@@ -8,8 +8,8 @@
  * Controller of the nycdaAngularJsFinalProjApp
  */
 angular.module('nycdaAngularJsFinalProjApp')
-  .controller('LoginCtrl', ['$scope', 'firebaseRef', '$firebaseSimpleLogin',
-        function ($scope, firebaseRef, $firebaseSimpleLogin ) {
+  .controller('LoginCtrl', ['$scope', 'firebaseRef', '$firebaseSimpleLogin', '$location',
+        function ($scope, firebaseRef, $firebaseSimpleLogin, $location ) {
 
 
     // boilerplate
@@ -20,7 +20,7 @@ angular.module('nycdaAngularJsFinalProjApp')
     ];
 
      $scope.err = "";
-
+     $scope.user = {};
      //console.log($scope.awesomeThings);
 
     var fbRef = firebaseRef('/users');
@@ -35,6 +35,9 @@ angular.module('nycdaAngularJsFinalProjApp')
         } else if (user) {
             // user authenticated with Firebase
             console.log('user.uid: ' + user.uid + ', user.provider: ' + user.provider);
+            $scope.$apply(function () {
+                $location.path('/');
+            });
         } else {
             // user is logged out
         }
@@ -44,9 +47,9 @@ angular.module('nycdaAngularJsFinalProjApp')
     var authRef = new Firebase("https://case-studies.firebaseio.com/.info/authenticated");
     authRef.on("value", function(snap) {
         if (snap.val() === true) {
-            alert("authenticated");
+//            alert("authenticated");
         } else {
-            alert("not authenticated");
+//            alert("not authenticated");
         }
     });
 
@@ -98,8 +101,7 @@ angular.module('nycdaAngularJsFinalProjApp')
 
   $scope.submit = function (password) {
       console.log('submit');
-      authClient.login('password');
-
+      authClient.login('password', $scope.user);
   };
 
 
