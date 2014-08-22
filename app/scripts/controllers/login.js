@@ -36,7 +36,7 @@ angular.module('nycdaAngularJsFinalProjApp')
             // user authenticated with Firebase
             console.log('user.uid: ' + user.uid + ', user.provider: ' + user.provider);
             $scope.$apply(function () {
-                $location.path('/');
+                $location.path('/main');
             });
         } else {
             // user is logged out
@@ -57,15 +57,14 @@ angular.module('nycdaAngularJsFinalProjApp')
 
 
   $scope.submit = function (password) {
-      console.log('submit');
+     // console.log('submit');
       authClient.login('password', $scope.user);
   };
 
   $scope.logout = function() {
-      console.log("logout");
+     // console.log("logout");
       authClient.logout();
       $location.path('/login');
-      //todo we need to send the user back to the main page
   }
 
 
