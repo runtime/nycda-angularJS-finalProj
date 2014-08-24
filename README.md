@@ -53,12 +53,6 @@ Data visualization of data, whether it be analytics or whatever I can get my han
 </ul>
 
 
-<b>Current Console log:</b>
-
-<b>login $scope.user.email: my.name@gmail.com login.js:47</b>
-MainCtrl: undefined main.js:16
-MainCtrl theCaseStudies.securitylevels: undefined main.js:21
-<b>MainCtrl $scope.user.email: undefined </b>
 
 
 <h3>Resources:</h3>
