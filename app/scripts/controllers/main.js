@@ -13,7 +13,14 @@ angular.module('nycdaAngularJsFinalProjApp')
 
             $scope.theCaseStudies = syncData('/casestudies').$asObject();
             $scope.studies = $scope.theCaseStudies.studies;
-            console.log($scope.studies);
+            console.log("MainCtrl $scope.studies: " + $scope.studies);
+
+        console.log("MainCtrl $scope.theCaseStudies" +  $scope.theCaseStudies );
+
+        $scope.securitylevels = $scope.theCaseStudies.securitylevels;
+        console.log("MainCtrl $scope.securitylevels: " + $scope.securitylevels);
+
+        console.log("MainCtrl $scope.user.email: " + $scope.fbRef);
 
         }]);
 

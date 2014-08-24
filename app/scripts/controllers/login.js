@@ -19,11 +19,21 @@ angular.module('nycdaAngularJsFinalProjApp')
       'Karma'
     ];
 
+     var _isNewUser = true;
      $scope.err = "";
      $scope.user = {};
-     //console.log($scope.awesomeThings);
+     console.log("login awesomethings: " + $scope.awesomeThings);
+     //console.log("login - casestudies: " + $scope.theCaseStudies);
+     //console.log("login - casestudies.securitylevels: " + $scope.theCaseStudies.securitylevels);
+
+     //COMPARE SECURITY LEVELS TO USER EMAIL TO SET $SCOPE CURRSECURITY LEVEL
+     $scope.currsecuritylevel = 0;
+
 
     var fbRef = firebaseRef('/users');
+
+    //$scope.fbRef = fbRef;
+
 
 
     // FBSL Example on site
@@ -33,8 +43,22 @@ angular.module('nycdaAngularJsFinalProjApp')
             console.log(error);
             $scope.err = error;
         } else if (user) {
+            if (_isNewUser) {
+                console.log("new user: " + user.email + "/ " + user.id);
+                // set and save user security level
+                console.log("login $scope.user.email: " + $scope.user.email);
+             fbRef.child('users').child(user.uid).set({
+                 userEmail: user.email,
+                 provider: user.provider,
+                 userID: user.id
+
+             });
+
+
+            }
             // user authenticated with Firebase
             console.log('user.uid: ' + user.uid + ', user.provider: ' + user.provider);
+            // set curresecuritylevel here
             $scope.$apply(function () {
                 $location.path('/main');
             });
@@ -43,8 +67,7 @@ angular.module('nycdaAngularJsFinalProjApp')
         }
     });
 
-
-    var authRef = new Firebase("https://case-studies.firebaseio.com/.info/authenticated");
+            var authRef = new Firebase("https://case-studies.firebaseio.com/.info/authenticated");
     authRef.on("value", function(snap) {
         if (snap.val() === true) {
 //            alert("authenticated");
@@ -57,7 +80,7 @@ angular.module('nycdaAngularJsFinalProjApp')
 
 
   $scope.submit = function (password) {
-     // console.log('submit');
+      console.log('password:' + password);
       authClient.login('password', $scope.user);
   };
 

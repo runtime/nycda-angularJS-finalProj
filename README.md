@@ -36,7 +36,29 @@ User permissions
 
 Data visualization of data, whether it be analytics or whatever I can get my hands on.
 
+<h3> Trying to share $scope.user across controllers.</h3>
 
+
+<i> <p>In trying to compare user.email to theCaseStudies.securitylevel objects I need to share the user object from two controllers</p>
+
+<p>Once logged in the router takes you to the /main directory where the MainCtrl fires. When the MainCtrl page loads $scope.user is undefined.</p>
+<p>The next issue is that I can't access the securitylevels in the MainCtrl.js as:</p>
+ <ul>
+     <li>$scope.theCaseStudies.securitylevels;</li>
+ </ul>
+ <p>But I can access them in the html via theCaseStudies:<p>
+
+<ul>
+     <li>security: {{theCaseStudies.securitylevels[0].user}} on line 5 of the main.html </li>
+</ul>
+
+
+<b>Current Console log:</b>
+
+<b>login $scope.user.email: my.name@gmail.com login.js:47</b>
+MainCtrl: undefined main.js:16
+MainCtrl theCaseStudies.securitylevels: undefined main.js:21
+<b>MainCtrl $scope.user.email: undefined </b>
 
 
 <h3>Resources:</h3>
