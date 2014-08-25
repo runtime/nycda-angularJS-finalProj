@@ -39,7 +39,10 @@ Data visualization of data, whether it be analytics or whatever I can get my han
 <h3> Trying to share $scope.user across controllers.</h3>
 
 
-<i> <p>In trying to compare user.email to theCaseStudies.securitylevel objects I need to share the user object from two controllers</p>
+<i> <p>In trying to compare user.email to theCaseStudies.securitylevel objects I need to share the user object from two controllers
+
+seems like a good solution for my particular problem (routing with fb simple login)
+https://github.com/firebase/angularfire-seed/blob/master/app/js/routes.js#L14</p>
 
 <p>Once logged in the router takes you to the /main directory where the MainCtrl fires. When the MainCtrl page loads $scope.user is undefined.</p>
 <p>The next issue is that I can't access the securitylevels in the MainCtrl.js as:</p>
@@ -53,13 +56,23 @@ Data visualization of data, whether it be analytics or whatever I can get my han
 </ul>
 
 
+<h3> in the best interest of time, i've taken a new approach </h3>
+
+<p>I'm dumping the routers and just using the main.index and main controller so there is no scope issue.
+still can't access the securitylevels object in case studies</p>
+
+
 
 
 <h3>Resources:</h3>
 
 AngularFire Auth:
-best example of auth (outdated)
-http://www.ng-newsletter.com/posts/back-end-with-firebase.html
+
+seems like a good solution for my particular problem (routing with fb simple login)
+https://github.com/firebase/angularfire-seed/blob/master/app/js/routes.js#L14
+
+issues with user across controllers
+http://stackoverflow.com/questions/17259556/factory-get-current-user-id-for-firebase-simple-login-email-password
 
 Sample jsfiddle:
 http://jsfiddle.net/firebase/wPBj5/

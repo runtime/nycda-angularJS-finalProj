@@ -1,35 +1,63 @@
-<div>
+<div class="container">
 
+    <!-- LOGIN -->
+    <!-- show when not logged in -->
+    <div class="row" ng-show="!loggedIn">
 
-    <h3>user:{{auth.user.userEmail}}</h3>
-    <h3>security: {{theCaseStudies.securitylevels[0].user}}</h3>
-    <h1>{{theCaseStudies.name}}</h1>
-    <hr>
+        <div class="col-sm-4 col-md-4 col-lg-4 col-lg-offset-4">
 
-    <div class="item" ng-repeat="study in theCaseStudies.studies">
-        <img src="{{study.image}}"/>
-        <h1>{{study.name}}</h1>
-        <h2>{{study.client}}</h2>
-        <h4>security level: {{study.rating}}</h4>
-        <p>{{study.description}}</p>
-        <h4>{{study.nominations}} Nominations</h4>
-         <ul>
-        <h4>TEAM:</h4>
-         <li ng-repeat="team in study.team">{{team.name}}, {{team.position}}</li>
-        </ul>
+            <form class="form-signin" role="form"
+                  ng-submit="submit(password)">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <input type="email" class="form-control" placeholder="Email address" ng-model="user.email" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" ng-model="user.password" required>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
 
-
+            <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
+        </div>
 
     </div>
 
 
-</div>
+    <!-- CASE STUDIES-->
 
-<div class=""  ng-controller="LoginCtrl">
+    <div class="row" ng-show="loggedIn">
+        <h3>user:{{user}}</h3>
+        <h3>security: {{theCaseStudies.securitylevels[0].user}}</h3>
+        <h1>{{theCaseStudies.name}}</h1>
+        <hr>
+
+        <div class="item" ng-repeat="study in theCaseStudies.studies" ng-show="securitylevel>study.rating">
+            <img src="{{study.image}}"/>
+            <h1>{{study.name}}</h1>
+            <h2>{{study.client}}</h2>
+            <h4>security level: {{study.rating}}</h4>
+            <p>{{study.description}}</p>
+            <h4>{{study.nominations}} Nominations</h4>
+            <ul>
+                <h4>TEAM:</h4>
+                <li ng-repeat="team in study.team">{{team.name}}, {{team.position}}</li>
+            </ul>
+        </div>
+    </div>
+
+
+   <!-- LOGOUT TEMP -->
+
+<div class="">
 
     <form class="form-logout" role="form"
           ng-submit="logout()">
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-submit="logout()">Logout</button>
     </form>
 </div>
+
+
+</div> <!-- end container -->
 

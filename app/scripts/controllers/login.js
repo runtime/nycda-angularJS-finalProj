@@ -23,7 +23,7 @@ angular.module('nycdaAngularJsFinalProjApp')
      $scope.err = "";
      $scope.user = {};
      console.log("login awesomethings: " + $scope.awesomeThings);
-     //console.log("login - casestudies: " + $scope.theCaseStudies);
+     console.log("login - casestudies: " + $scope.theCaseStudies);
      //console.log("login - casestudies.securitylevels: " + $scope.theCaseStudies.securitylevels);
 
      //COMPARE SECURITY LEVELS TO USER EMAIL TO SET $SCOPE CURRSECURITY LEVEL
@@ -46,7 +46,7 @@ angular.module('nycdaAngularJsFinalProjApp')
             if (_isNewUser) {
                 console.log("new user: " + user.email + "/ " + user.id);
                 // set and save user security level
-                console.log("login $scope.user.email: " + $scope.user.email);
+                console.log("login $scope.user: " + $scope.user);
              fbRef.child('users').child(user.uid).set({
                  userEmail: user.email,
                  provider: user.provider,
@@ -80,7 +80,7 @@ angular.module('nycdaAngularJsFinalProjApp')
 
 
   $scope.submit = function (password) {
-      console.log('password:' + password);
+      console.log('login: $scope.user' + $scope.user);
       authClient.login('password', $scope.user);
   };
 
