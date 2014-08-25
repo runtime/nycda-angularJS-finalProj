@@ -33,14 +33,16 @@ angular.module('nycdaAngularJsFinalProjApp')
         function ($scope, syncData, firebaseRef, $firebaseSimpleLogin, $location) {
 
             $scope.theCaseStudies = syncData('/casestudies').$asObject();
+            $scope.theCaseStudies.$loaded().then(function (caseStudies) {
+                console.log(caseStudies.securitylevels);
+
+                //Do whatever you need to here
+            });
 
            // $scope.studies = $scope.theCaseStudies.studies;
           //  console.log("$scope.studies: " + $scope.studies);
 
-            console.log("$scope.theCaseStudies" +  $scope.theCaseStudies );
-
           //  $scope.securitylevels = $scope.theCaseStudies.securitylevels;
-            console.log("securitylevels: " + $scope.theCaseStudies);
 
            // console.log("MainCtrl $scope.user: " + $scope.user);
            // console.log("MainCtrl $scope.awesomeThings " + $scope.awesomeThings);
