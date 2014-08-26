@@ -7,48 +7,26 @@
  * # MainCtrl
  * Controller of the nycdaAngularJsFinalProjApp
  */
-//angular.module('nycdaAngularJsFinalProjApp')
-//    .controller('MainCtrl', ['$scope', 'syncData',
-//        function ($scope, syncData) {
-//
-//            $scope.theCaseStudies = syncData('/casestudies').$asObject();
-//            $scope.studies = $scope.theCaseStudies.studies;
-//            console.log("MainCtrl $scope.studies: " + $scope.studies);
-//
-//            console.log("MainCtrl $scope.theCaseStudies" +  $scope.theCaseStudies );
-//
-//            $scope.securitylevels = $scope.theCaseStudies.securitylevels;
-//            console.log("MainCtrl $scope.securitylevels: " + $scope.securitylevels);
-//
-//            console.log("MainCtrl $scope.user: " + $scope.user);
-//            console.log("MainCtrl $scope.awesomeThings " + $scope.awesomeThings);
-//
-//            $scope.securitylevel = 3;
-//
-//        }]);
 
 
 angular.module('nycdaAngularJsFinalProjApp')
-    .controller('MainCtrl', ['$scope', 'syncData', 'firebaseRef', '$firebaseSimpleLogin', '$location',
-        function ($scope, syncData, firebaseRef, $firebaseSimpleLogin, $location) {
+    .controller('MainCtrl', ['$scope', '$rootScope', 'syncData', 'firebaseRef', '$firebaseSimpleLogin', '$location',
+        function ($scope, $rootScope, syncData, firebaseRef, $firebaseSimpleLogin, $location) {
 
             $scope.theCaseStudies = syncData('/casestudies').$asObject();
-            $scope.theCaseStudies.$loaded().then(function (caseStudies) {
-                console.log(caseStudies.securitylevels);
 
+            // assume we are loading asyncronous so we need to wait for it to be loaded
+            // before we try to do something
+            $scope.theCaseStudies.$loaded().then(function (caseStudies) {
+                //console.log(caseStudies.securitylevels);
                 //Do whatever you need to here
+                $scope.securitylevels = caseStudies.securitylevels;
+
             });
 
-           // $scope.studies = $scope.theCaseStudies.studies;
-          //  console.log("$scope.studies: " + $scope.studies);
 
-          //  $scope.securitylevels = $scope.theCaseStudies.securitylevels;
-
-           // console.log("MainCtrl $scope.user: " + $scope.user);
-           // console.log("MainCtrl $scope.awesomeThings " + $scope.awesomeThings);
-
-            $scope.securitylevel = 3;
-            $scope.loggedIn = false;
+            $scope.securitylevel = 0;
+            $rootScope.loggedIn = false;
 
 
             //////////////////////////////////////
@@ -58,17 +36,11 @@ angular.module('nycdaAngularJsFinalProjApp')
             $scope.user = {};
 
 
-            //COMPARE SECURITY LEVELS TO USER EMAIL TO SET $SCOPE CURRSECURITY LEVEL
-            $scope.currsecuritylevel = 0;
-
-
             var fbRef = firebaseRef('/users');
 
-            //$scope.fbRef = fbRef;
 
+            // FBSL
 
-
-            // FBSL Example on site
             var authClient = new FirebaseSimpleLogin(fbRef, function(error, user) {
                 if (error) {
                     // an error occurred while attempting login
@@ -78,6 +50,8 @@ angular.module('nycdaAngularJsFinalProjApp')
                     if (_isNewUser) {
                         console.log("new user: " + user.email + "/ " + user.id);
                         // set and save user security level
+                        // use rootscope
+                        $rootScope.user = user;
                         console.log("$scope.user: " + $scope.user);
                         fbRef.child('users').child(user.uid).set({
                             userEmail: user.email,
@@ -86,13 +60,22 @@ angular.module('nycdaAngularJsFinalProjApp')
 
                         });
 
-                        $scope.loggedIn = true;
+
+                        var len = $scope.securitylevels.length;
+
+                        for (var i=0; i<len; i++) {
+                            if (user.email == $scope.securitylevels[i].user) {
+                                $scope.securitylevel = $scope.securitylevels[i].securityLevel;
+                                //console.log("!! securityLevel: " + $scope.securitylevel);
+                            }
+                        }
+
+                        $rootScope.loggedIn = true;
 
 
                     }
                     // user authenticated with Firebase
-                    console.log('user.uid: ' + user.uid + ', user.provider: ' + user.provider);
-                    // set curresecuritylevel here
+                   // console.log('user.uid: ' + user.uid + ', user.provider: ' + user.provider);
                     $scope.$apply(function () {
                         $location.path('/main');
                     });
@@ -101,16 +84,17 @@ angular.module('nycdaAngularJsFinalProjApp')
                 }
             });
 
+
+           $scope.authClient = authClient;
+
             var authRef = new Firebase("https://case-studies.firebaseio.com/.info/authenticated");
             authRef.on("value", function(snap) {
                 if (snap.val() === true) {
-//            alert("authenticated");
+                    //alert("authenticated");
                 } else {
-//            alert("not authenticated");
+                    //alert("not authenticated");
                 }
             });
-
-
 
 
             $scope.submit = function (password) {
@@ -121,6 +105,8 @@ angular.module('nycdaAngularJsFinalProjApp')
             $scope.logout = function() {
                 // console.log("logout");
                 authClient.logout();
+                // delete is better than null;
+                delete $rootScope.user;
                 $location.path('/');
             }
 

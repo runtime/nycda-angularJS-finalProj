@@ -28,18 +28,20 @@
     <!-- CASE STUDIES-->
 
     <div class="row" ng-show="loggedIn">
-        <h3>user:{{user}}</h3>
-        <h3>security: {{theCaseStudies.securitylevels[0].user}}</h3>
-        <h1>{{theCaseStudies.name}}</h1>
-        <hr>
+        <h3>user:{{user.email}}</h3>
+        <!--<h3>security: {{securitylevel}}</h3>-->
+        <!--<hr>-->
+        <!--<h1>{{theCaseStudies.name}}</h1>-->
+        <!--<hr>-->
 
-        <div class="item" ng-repeat="study in theCaseStudies.studies" ng-show="securitylevel>study.rating">
+        <div class="item" ng-repeat="study in theCaseStudies.studies" ng-show="securitylevel>study.level">
             <img src="{{study.image}}"/>
             <h1>{{study.name}}</h1>
             <h2>{{study.client}}</h2>
-            <h4>security level: {{study.rating}}</h4>
+            <h4>security level: {{study.level}}</h4>
             <p>{{study.description}}</p>
             <h4>{{study.nominations}} Nominations</h4>
+            <h4>Awards Won: {{study.rating}}</h4>
             <ul>
                 <h4>TEAM:</h4>
                 <li ng-repeat="team in study.team">{{team.name}}, {{team.position}}</li>
@@ -50,7 +52,7 @@
 
    <!-- LOGOUT TEMP -->
 
-<div class="">
+<div class="" ng-show="loggedIn">
 
     <form class="form-logout" role="form"
           ng-submit="logout()">
