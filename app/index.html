@@ -29,12 +29,7 @@
     <div class="header" ng-controller="HeaderCtrl">
 
        <p class="text-muted pull-right" ng-show="loggedIn">{{user.email}}</p>
-        <p>{{awesomeThings}}</p>
 
-        <form class="form-logout" role="form"
-              ng-submit="logout()">
-            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-submit="logout()">Logout</button>
-        </form>
         <!--<h3>security: {{securitylevel}}</h3>-->
         <!--<hr>-->
         <!--<h1>{{theCaseStudies.name}}</h1>-->
@@ -45,7 +40,9 @@
             <!--<li><a ng-href="#">Contact</a></li>-->
         <!--</ul>-->
 
-        <h3 class="text-muted">Case Studies App</h3>
+
+        <img src="http://www.interactiveanimator.com/client/2014/angular/casestudies/angular-logo.png"/>
+        <h4 class="text-muted">Case Studies App</h4>
     </div>
 
     <div ng-view=""></div>
