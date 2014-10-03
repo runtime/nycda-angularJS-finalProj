@@ -99,3 +99,54 @@ http://briantford.com/blog/angular-yeoman
 
 centering content in a row using offset or creating your own class
 http://stackoverflow.com/questions/18153234/center-a-div-using-bootstrap-3-markup-or-css
+
+DEPLOYING:
+
+comment out lines in Gruntfile.js
+   // 'newer:jshint',
+  //  'test',
+
+grunt build
+
+running into errors behind firewall on grunt build needed to :
+git config --global url."https://".insteadOf git://
+
+then follow these directions:
+https://www.firebase.com/docs/hosting/guide/deploying.html
+
+change your public folder to "dist"
+
+as that is where Grunt builds your files.
+
+
+
+
+mobile:nycda-angularJS-finalProj Mobile_Home$ firebase init
+
+
+
+Please sign into your Firebase account to continue...
+Email:XXXX.XXXXX@gmail.com
+Password:
+----------------------------------------------------
+Your Firebase Apps XXXXX.XXXXXX@gmail.com
+----------------------------------------------------
+case-studies
+
+----------------------------------------------------
+Enter the name of the Firebase app you would like to use for hosting
+Firebase app: case-studies
+----------------------------------------------------
+Site URL: https://case-studies.firebaseapp.com
+----------------------------------------------------
+Enter the name of your app's public directory.
+(usually where you store your index.html file)
+Public Directory: (current directory) app
+Initializing app into current directory...
+Writing firebase.json settings file...
+Successfully initialized app
+To deploy: firebase deploy
+mobile:nycda-angularJS-finalProj Mobile_Home$ firebase deploy
+Preparing to deploy Public Directory...
+progress: 100%
+
